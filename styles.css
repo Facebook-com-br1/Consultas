@@ -1,0 +1,130 @@
+/* Reset básico para garantir consistência entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+header {
+    background-color: #4b0082; /* Roxo */
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+header img {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+
+header h1 {
+    font-size: 1.8em;
+}
+
+main {
+    padding: 20px;
+}
+
+.consultas {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.consultas h2 {
+    color: #4b0082; /* Roxo */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.consulta-item {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.consulta-item label {
+    display: block;
+    margin-bottom: 5px;
+    color: #4b0082; /* Roxo */
+}
+
+.consulta-item input {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #4b0082; /* Roxo */
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.consulta-item input:focus {
+    border-color: #8a2be2; /* Tom mais claro de roxo */
+}
+
+#search-button {
+    background-color: #4b0082; /* Roxo */
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    margin-left: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#search-button:hover {
+    background-color: #8a2be2; /* Tom mais claro de roxo */
+}
+
+.telegram {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.telegram a {
+    color: #4b0082; /* Roxo */
+    text-decoration: none;
+    font-size: 1.2em;
+    display: inline-flex;
+    align-items: center;
+}
+
+.telegram i {
+    margin-right: 10px;
+    font-size: 1.5em;
+}
+
+.results {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.results h2 {
+    color: #4b0082; /* Roxo */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#resultados {
+    color: #333;
+}
+
+.loading {
+    text-align: center;
+    color: #4b0082; /* Roxo */
+    font-size: 1.2em;
+    display: none;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAINEL VIP DBS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="icon.png" type="image/png">
+    <!-- Adicionando Font Awesome para usar ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <img src="icon.png" alt="Ícone do Painel VIP DBS">
+        <h1>PAINEL VIP DBS</h1>
+    </header>
+    <main>
+        <section class="consultas">
+            <h2>Consultas pela URL</h2>
+            <div class="consulta-item">
+                <label for="url1">Consulta:</label>
+                <input type="text" id="url1" placeholder="Digite a URL">
+                <button id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+        </section>
+        <section class="telegram">
+            <a href="https://t.me/vipdns49" target="_blank">
+                <i class="fab fa-telegram-plane"></i> Compre as melhores logins do mercado
+            </a>
+        </section>
+        <section class="results">
+            <h2>Resultados da Pesquisa</h2>
+            <div id="loading" class="loading">
+                <i class="fas fa-spinner fa-spin"></i> Pesquisando...
+            </div>
+            <div id="resultados"></div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('search-button').addEventListener('click', function() {
+            const url = document.getElementById('url1').value;
+            const resultados = document.getElementById('resultados');
+            const loading = document.getElementById('loading');
+            resultados.innerHTML = '';
+            loading.style.display = 'block';
+
+            fetch(`/buscar_arquivo?url=${encodeURIComponent(url)}`)
+                .then(response => response.json())
+                .then(matches => {
+                    loading.style.display = 'none';
+                    if (matches.length === 0) {
+                        resultados.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+                    } else {
+                        matches.forEach(login => {
+                            const p = document.createElement('p');
+                            p.textContent = login;
+                            resultados.appendChild(p);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    loading.style.display = 'none';
+                    resultados.innerHTML = '<p>Ocorreu um erro durante a pesquisa.</p>';
+                });
+        });
+    </script>
+</body>
+</html>
